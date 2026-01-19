@@ -20,5 +20,5 @@
       name = "alasflyn";
       home = "/Users/alasflyn";
   };
-  home-manager.users.alasflyn = ./home.nix;
+  home-manager.users.alasflyn = ./home/home.nix;
 }

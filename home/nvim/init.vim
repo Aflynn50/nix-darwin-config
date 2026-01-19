@@ -1,3 +1,4 @@
+
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -102,63 +103,9 @@ set nofoldenable
 "Use clipboard for copying always
 "set clipboard+=unnamedplus
 
-call plug#begin()
-" Plug 'ctrlpvim/ctrlp.vim'
-Plug 'fatih/vim-go'
-Plug 'tpope/vim-fugitive'
-Plug 'edwinb/idris2-vim'
-"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-"Plug 'junegunn/fzf.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'preservim/vim-markdown'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-abolish'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' } "run :checkhealth telescope
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'Aflynn50/NeoSolarized'
-Plug 'romainl/vim-cool'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'neovim/nvim-lspconfig'
-Plug 'rust-lang/rust.vim'
-" cutlass turns off copy on delete
-" Plug 'svermeulen/vim-cutlass'
-" Plug 'ray-x/go.nvim'
-" Plug 'ray-x/guihua.lua'
-call plug#end()
-
 set termguicolors
 syntax enable
 let g:airline_theme='solarized'
 set background=light
 colorscheme NeoSolarized
 
-lua require('telescope').load_extension('fzf')
-
-lua require('lspconfig')
-
-"lua <<EOF
-"local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
-"vim.api.nvim_create_autocmd("BufWritePre", {
-"  pattern = "*.go",
-"  callback = function()
-"   require("go.format").gofmt()  -- gofmt only
-"  end,
-"  group = format_sync_grp,
-"})
-
-"require('go').setup({
-"    gofmt = '/snap/bin/gofmt', 
-"    max_line_len = 1200,
-"})
-"EOF
-
-lua <<EOF
-require('nvim-treesitter.configs').setup {
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-}
-
-EOF
