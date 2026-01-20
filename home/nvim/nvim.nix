@@ -29,12 +29,12 @@
       src = pkgs.fetchFromGitHub {
         owner = "Aflynn50";
         repo = "NeoSolarized";
-        rev = "main";
-        sha256 = "0000000000000000000000000000000000000000000000000000";
+        rev = "master";
+        sha256 = "rNALVVh8HDNqkE7xQxix/eJjHlysWZeftieM6aAo4r0=";
       };
     })
   ];
 
-  extraConfig = ./init.vim;
-  extraLuaConfig = ./init.lua;
+  extraConfig = builtins.readFile ./init.vim;
+  extraLuaConfig = builtins.readFile ./init.lua;
 }
