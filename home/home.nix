@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, lib, ... }:
 {
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -58,17 +57,7 @@
   # };
 
   # nvim config
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-  };
-  home.file.nvim-config = {
-      source = ./dotfiles/.config/nvim;
-      target = ".config/nvim";
-  };
+  programs.neovim = import ./nvim/nvim.nix { inherit pkgs; };
 
   # fish shell.
   programs.fish = {

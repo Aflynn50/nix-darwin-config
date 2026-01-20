@@ -9,7 +9,8 @@
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
 
-  # Enable fish shell integration.
+  # Enable fish shell integration. This needs to be done here as well as in
+  # home manager. Enabling it here populates the path with nix locations.
   programs.fish.enable = true;
 
   # Used for backwards compatibility, please read the changelog before changing.
