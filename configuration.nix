@@ -9,6 +9,9 @@
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
 
+  # Enable fish shell integration.
+  programs.fish.enable = true;
+
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 6;
@@ -19,6 +22,7 @@
   users.users.alasflyn = {
       name = "alasflyn";
       home = "/Users/alasflyn";
+      shell = pkgs.fish;
   };
   home-manager.users.alasflyn = ./home/home.nix;
 }
