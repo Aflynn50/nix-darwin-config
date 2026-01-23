@@ -80,6 +80,9 @@
     recursive = true;
   };
 
+  # ghostty currently doesn't build from source on MacOS so this just manages the config.
+  programs.ghostty = import ./ghostty/ghostty.nix { inherit pkgs; }; 
+
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell
