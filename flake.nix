@@ -26,7 +26,12 @@
 		./modules/hosts/aws.nix
 		home-manager.darwinModules.home-manager
 		(mkHome "alaflyn")
+		{
+		  # Set Git commit hash for darwin-version.
+		  system.configurationRevision = self.rev or self.dirtyRev or null;
+		}
 	      ];
+
 	};
 	"GC9VDX0C4R" = nix-darwin.lib.darwinSystem { # S1 mac
 	      modules = [ 
@@ -34,6 +39,10 @@
 		./modules/hosts/s1.nix
 		home-manager.darwinModules.home-manager
 		(mkHome "alastai.flynn")
+		{
+		  # Set Git commit hash for darwin-version.
+		  system.configurationRevision = self.rev or self.dirtyRev or null;
+		}
 	   ];
 	};
       };
