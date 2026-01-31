@@ -13,24 +13,29 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }: {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#842f57432ec3
-    darwinConfigurations."842f57432ec3" = nix-darwin.lib.darwinSystem {
-      modules = [ 
-        ./configuration.nix
-        home-manager.darwinModules.home-manager
-        {
-          # Let Determinate Nix handle Nix configuration
-          nix.enable = false;
-
-          # Enable touch ID for sudo
-          security.pam.services.sudo_local.touchIdAuth = true;
-
-          # Set Git commit hash for darwin-version.
-          system.configurationRevision = self.rev or self.dirtyRev or null;
-        }
-      ];
-    };
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
+    let
+      mkHome = username: {
+        home-manager.users.${username} = import ./home/home.nix;
+      };
+    in  {
+    darwinConfigurations = {
+	"842f57432ec3" = nix-darwin.lib.darwinSystem { # Aws mac
+	      modules = [ 
+		./configuration.nix
+		./modules/hosts/aws.nix
+		home-manager.darwinModules.home-manager
+		(mkHome "alaflyn")
+	      ];
+	};
+	"GC9VDX0C4R" = nix-darwin.lib.darwinSystem { # S1 mac
+	      modules = [ 
+		./configuration.nix
+		./modules/hosts/s1.nix
+		home-manager.darwinModules.home-manager
+		(mkHome "alastai.flynn")
+	   ];
+	};
+      };
   };
 }
