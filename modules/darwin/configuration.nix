@@ -1,4 +1,3 @@
-
 { pkgs, ... }: {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -25,7 +24,4 @@
 
   # Enable touch ID for sudo
   security.pam.services.sudo_local.touchIdAuth = true;
-
-  # Set Git commit hash for darwin-version.
-  system.configurationRevision = self.rev or self.dirtyRev or null;
 }
