@@ -1,5 +1,9 @@
-{ config, pkgs, lib, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -21,7 +25,6 @@
     # nix lsp
     nixd
 
-
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -38,34 +41,41 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   # home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
+  # # Building this configuration will create a copy of 'dotfiles/screenrc' in
+  # # the Nix store. Activating the configuration will then make '~/.screenrc' a
+  # # symlink to the Nix store copy.
+  # ".screenrc".source = dotfiles/screenrc;
 
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
+  # # You can also set the file content immediately.
+  # ".gradle/gradle.properties".text = ''
+  #   org.gradle.console=verbose
+  #   org.gradle.daemon.idletimeout=3600000
+  # '';
   # };
 
   # nvim config
-  programs.neovim = import ./nvim/nvim.nix { inherit pkgs; };
+  programs.neovim = import ./nvim/nvim.nix {inherit pkgs;};
 
   # fish shell.
   programs.fish = {
     enable = true;
-  
+
     # Your config.fish content goes here
     interactiveShellInit = builtins.readFile ./dotfiles/.config/fish/config.fish;
+
+    plugins = [
+      {
+        name = "puffer";
+        src = pkgs.fishPlugins.puffer.src;
+      }
+    ];
   };
+
   # Copy your other directories
   home.file.".config/fish/functions" = {
     source = ./dotfiles/.config/fish/functions;
@@ -81,7 +91,7 @@
   };
 
   # ghostty currently doesn't build from source on MacOS so this just manages the config.
-  programs.ghostty = import ./ghostty/ghostty.nix { inherit pkgs; }; 
+  programs.ghostty = import ./ghostty/ghostty.nix {inherit pkgs;};
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
@@ -105,9 +115,9 @@
 
   # Git
   programs.git = {
-      enable = true;
-      userName = "Aflynn50";
-      userEmail = "af@aflynn.uk";
+    enable = true;
+    userName = "Aflynn50";
+    userEmail = "af@aflynn.uk";
   };
 
   # Let Home Manager install and manage itself.
