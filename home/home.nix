@@ -20,6 +20,8 @@
     ripgrep
     jq
 
+    sl
+
     # .nix file formatter
     alejandra
     # nix lsp
