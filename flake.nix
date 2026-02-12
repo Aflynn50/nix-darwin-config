@@ -33,7 +33,7 @@
           ./configuration.nix
           ./modules/hosts/aws.nix
           home-manager.darwinModules.home-manager
-          (mkHome "alaflyn")
+          (mkHome "alasflyn")
           {
             # Set Git commit hash for darwin-version. The self property is only
             # available here, so just plonk this here for now.
