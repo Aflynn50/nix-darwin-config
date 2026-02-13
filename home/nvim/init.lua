@@ -1,4 +1,12 @@
-require('telescope').load_extension('fzf')
+local telescope = require('telescope')
+telescope.setup {
+    pickers = {
+        find_files = {
+            hidden = true
+        }
+    }
+}
+telescope.load_extension('fzf')
 
 -- Settings for nixd nix language server. The language server itself is
 -- installed through home manager as a package.
