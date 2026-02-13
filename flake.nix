@@ -24,6 +24,9 @@
     # that mostly imports a common one.
     mkHome = username: {
       home-manager.users.${username} = import ./home/home.nix;
+
+      # Automatically append old files to be replaced with .before-home-manager
+      home-manager.backupFileExtension = ".before-home-manager";
     };
   in {
     darwinConfigurations = {

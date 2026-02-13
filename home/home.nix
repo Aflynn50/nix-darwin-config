@@ -95,6 +95,27 @@
   # ghostty currently doesn't build from source on MacOS so this just manages the config.
   programs.ghostty = import ./ghostty/ghostty.nix {inherit pkgs;};
 
+  # ZSH config
+  home.file.".oh-my-zsh" = {
+    source = ./dotfiles/.oh-my-zsh;
+    recursive = true;
+  };
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
+    oh-my-zsh = {
+      enable = true;
+      plugins = ["git" "shrink-path"];
+      custom = "/Users/alasflyn/.oh-my-zsh/custom";
+      theme = "aflynn";
+    };
+    initContent = ''
+      . /Users/alasflyn/workplace/Uluru/CloudsoftUluruHelpers/src/CloudsoftUluruHelpers/build/bin/install-uluru-scripts.sh --quiet --profile uluru
+    '';
+  };
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell
