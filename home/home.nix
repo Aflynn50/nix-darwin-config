@@ -17,10 +17,12 @@
   # environment.
   home.packages = with pkgs; [
     # utils
+    coreutils # gnu coreutils
     ripgrep
     jq
     tree
     sl
+    gnused # sed
 
     # .nix file formatter
     alejandra
@@ -30,6 +32,11 @@
 
   # nvim config
   programs.neovim = import ./nvim/nvim.nix {inherit pkgs;};
+
+  # starship
+  programs.starship = {
+    enable = true;
+  };
 
   # fish shell.
   programs.fish = {
@@ -42,6 +49,10 @@
       {
         name = "puffer";
         src = pkgs.fishPlugins.puffer.src;
+      }
+      {
+        name = "bass";
+        src = pkgs.fishPlugins.bass.src;
       }
     ];
   };

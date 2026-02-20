@@ -10,3 +10,5 @@ if test (uname) = Darwin
 end
 
 set -Ux EDITOR "vim"
+
+starship init fish | source
