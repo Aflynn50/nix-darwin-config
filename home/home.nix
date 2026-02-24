@@ -24,10 +24,10 @@
     sl
     gnused # sed
 
-    # .nix file formatter
-    alejandra
-    # nix lsp
-    nixd
+    # lsp/file formatters
+    alejandra # .nix file formatter
+    nixd # nix lsp
+    lua-language-server  
   ];
 
   # nvim config
