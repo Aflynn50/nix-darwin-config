@@ -10,32 +10,33 @@ telescope.load_extension('fzf')
 
 -- Settings for nixd nix language server. The language server itself is
 -- installed through home manager as a package.
-require('lspconfig').nixd.setup {
-  autostart = true,
-  settings = {
-    nixd = {
-      nixpkgs = {
-        -- I believe that this tells nixd about all nix packages, probably
-        -- using the 25.05 set on this machine.
-        expr = "import <nixpkgs> { }", 
-      },
-      formatting = {
-        -- alejandra is a syntax highlighter, it is installed as a home manager
-        -- package.
-        command = { "alejandra" },
-      },
-      options = {
-        -- This does some clever stuff to get the nix config for the current project.
-        nixos = {
-           expr = '(builtins.getFlake ("git+file://" + toString ./.)).nixosConfigurations.k-on.options',
+vim.lsp.config('nixd', {
+    autostart = true,
+    settings = {
+      nixd = {
+        nixpkgs = {
+          -- I believe that this tells nixd about all nix packages, probably
+          -- using the version of nixpkgs set on this machine.
+          expr = "import <nixpkgs> { }", 
         },
-        home_manager = {
-           expr = '(builtins.getFlake ("git+file://" + toString ./.)).homeConfigurations."ruixi@k-on".options',
+        formatting = {
+          -- alejandra is a syntax highlighter, it is installed as a home manager
+          -- package.
+          command = { "alejandra" },
+        },
+        options = {
+          -- This does some clever stuff to get the nix config for the current project.
+          nixos = {
+             expr = '(builtins.getFlake ("git+file://" + toString ./.)).nixosConfigurations.k-on.options',
+          },
+          home_manager = {
+             expr = '(builtins.getFlake ("git+file://" + toString ./.)).homeConfigurations."ruixi@k-on".options',
+          },
         },
       },
     },
-  },
-}
+  }
+)
 
 -- Format nix files on save.
 vim.api.nvim_create_autocmd("BufWritePre", {

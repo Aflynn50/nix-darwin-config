@@ -37,6 +37,9 @@
   programs.starship = {
     enable = true;
   };
+  home.file.".config/starship.toml" = {
+    source = ./dotfiles/.config/starship.toml;
+  };
 
   # fish shell.
   programs.fish = {
@@ -103,8 +106,8 @@
   # Git
   programs.git = {
     enable = true;
-    userName = "Aflynn50";
-    userEmail = "af@aflynn.uk";
+    settings.user.name = "Aflynn50";
+    settings.user.email = "af@aflynn.uk";
   };
 
   # Let Home Manager install and manage itself.
