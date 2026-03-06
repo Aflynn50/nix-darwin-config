@@ -74,9 +74,9 @@
 
     homeConfigurations = {
       # Standalone home-manager for Linux. Run: home-manager switch --flake .
-      "alasflyn" = mkHomeConfiguration {
+      "aflynn" = mkHomeConfiguration {
         system = "x86_64-linux";
-        username = "alasflyn";
+        username = "aflynn";
         hostHomeModule = {};
       };
     };

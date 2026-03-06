@@ -22,6 +22,7 @@
     nvim-lspconfig
     rust-vim
     nvim-jdtls
+    nvim-tree-lua
 
     # My custom NeoSolarized 
     (pkgs.vimUtils.buildVimPlugin {
