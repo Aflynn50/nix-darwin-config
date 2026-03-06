@@ -10,4 +10,6 @@
     "ctrl+left=esc:b"
     "ctrl+right=esc:f"
   ];
+
+  shell-integration-features = "ssh-terminfo";
 }
