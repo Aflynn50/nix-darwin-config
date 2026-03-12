@@ -112,7 +112,7 @@ vim.lsp.config['lua_ls'] = {
 vim.lsp.enable('lua_ls')
 
 -- nvim-tree
--- disable netrw at the very start of your init.lua
+-- disable netrw (built in file tree) at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
@@ -122,6 +122,14 @@ vim.opt.termguicolors = true
 -- empty setup using defaults
 require("nvim-tree").setup()
 
+vim.keymap.set("n", "<leader>t", function()
+    require("nvim-tree.api").tree.toggle({
+        path = "<args>",
+        find_file = false,
+        update_root = false,
+        focus = true,
+    })
+end)
 -- OR setup with a config
 
 ---@type nvim_tree.config

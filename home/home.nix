@@ -13,6 +13,9 @@
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
+  # Claude code is not free - need to allow this to install it with nix
+  nixpkgs.config.allowUnfree = true;
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -25,6 +28,8 @@
     sl
     gnused # sed
     uv # python package manager
+
+    claude-code
 
     # lsp/file formatters
     alejandra # .nix file formatter
@@ -42,6 +47,7 @@
   # starship
   programs.starship = {
     enable = true;
+    package = pkgs.starship;
   };
   home.file.".config/starship.toml" = {
     source = ./dotfiles/.config/starship.toml;

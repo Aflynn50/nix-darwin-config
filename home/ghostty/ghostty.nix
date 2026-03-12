@@ -10,6 +10,10 @@
     keybind = [
       "ctrl+left=esc:b"
       "ctrl+right=esc:f"
+      "ctrl+alt+left=goto_split:left"
+      "ctrl+alt+right=goto_split:right"
+      "ctrl+alt+down=goto_split:down"
+      "ctrl+alt+up=goto_split:up"
     ];
     shell-integration-features = "ssh-terminfo";
   };
