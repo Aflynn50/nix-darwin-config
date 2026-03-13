@@ -69,6 +69,10 @@
         name = "bass";
         src = pkgs.fishPlugins.bass.src;
       }
+      {
+        name = "plugin-git";
+        src = pkgs.fishPlugins.plugin-git.src;
+      }
     ];
   };
 
