@@ -20,6 +20,8 @@ vim.g.mapleader = " "
 vim.cmd("syntax on")
 vim.cmd("colorscheme NeoSolarized")
 
+-- Keymap --
+
 -- Window navigation
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 vim.keymap.set("n", "<C-h>", "<C-w>h")
@@ -29,6 +31,30 @@ vim.keymap.set("n", "<C-k>", "<C-w>k")
 -- Ctrl-backspace to delete previous word
 vim.keymap.set("!", "<C-BS>", "<C-w>")
 vim.keymap.set("!", "<C-h>", "<C-w>")
+
+vim.keymap.set("n", "<leader>t", function()
+    require("nvim-tree.api").tree.toggle({
+        path = "<args>",
+        find_file = false,
+        update_root = false,
+        focus = true,
+    })
+end)
+
+-- Leap.nvim
+vim.keymap.set({ 'n', 'x', 'o' }, '<leader>f', '<Plug>(leap)')
+vim.keymap.set('n', '<leader>F', '<Plug>(leap-from-window)')
+
+-- Telescope keymaps --
+-- My mappings
+vim.keymap.set("n", "<C-p>", function() require("telescope.builtin").find_files() end)
+vim.keymap.set("n", "<leader>g", function() require("telescope.builtin").live_grep() end)
+
+-- Suggested default mappings
+vim.keymap.set("n", "<leader>ff", function() require("telescope.builtin").find_files() end)
+vim.keymap.set("n", "<leader>fg", function() require("telescope.builtin").live_grep() end)
+vim.keymap.set("n", "<leader>fb", function() require("telescope.builtin").buffers() end)
+vim.keymap.set("n", "<leader>fh", function() require("telescope.builtin").help_tags() end)
 
 -- Plugins
 vim.g.vim_markdown_folding_disabled = 1
@@ -121,16 +147,6 @@ vim.opt.termguicolors = true
 
 -- empty setup using defaults
 require("nvim-tree").setup()
-
-vim.keymap.set("n", "<leader>t", function()
-    require("nvim-tree.api").tree.toggle({
-        path = "<args>",
-        find_file = false,
-        update_root = false,
-        focus = true,
-    })
-end)
--- OR setup with a config
 
 ---@type nvim_tree.config
 local config = {

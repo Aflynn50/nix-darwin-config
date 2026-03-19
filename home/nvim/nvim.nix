@@ -23,6 +23,8 @@
     rust-vim
     nvim-jdtls
     nvim-tree-lua
+    leap-nvim
+    vim-repeat
 
     # My custom NeoSolarized 
     (pkgs.vimUtils.buildVimPlugin {
