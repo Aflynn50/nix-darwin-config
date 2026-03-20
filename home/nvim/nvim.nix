@@ -25,6 +25,7 @@
     nvim-tree-lua
     leap-nvim
     vim-repeat
+    oil-nvim
 
     # My custom NeoSolarized 
     (pkgs.vimUtils.buildVimPlugin {

@@ -148,6 +148,10 @@ vim.opt.termguicolors = true
 -- empty setup using defaults
 require("nvim-tree").setup()
 
+vim.keymap.set("n", "<leader>t", function()
+    require("nvim-tree.api").tree.toggle()
+end)
+
 ---@type nvim_tree.config
 local config = {
     sort = {
@@ -160,10 +164,13 @@ local config = {
         group_empty = true,
     },
     filters = {
-        dotfiles = true,
+        dotfiles = false,
     },
 }
 require("nvim-tree").setup(config)
+
+-- Oil
+require("oil").setup()
 
 -- Load plugin config
 require('telescope_config')
