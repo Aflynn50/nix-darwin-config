@@ -34,7 +34,8 @@
     # lsp/file formatters
     alejandra # .nix file formatter
     nixd # nix lsp
-    lua-language-server
+    lua-language-server # lua
+    jdt-language-server # java
   ];
 
   # nvim config

@@ -56,6 +56,11 @@ vim.keymap.set("n", "<leader>fg", function() require("telescope.builtin").live_g
 vim.keymap.set("n", "<leader>fb", function() require("telescope.builtin").buffers() end)
 vim.keymap.set("n", "<leader>fh", function() require("telescope.builtin").help_tags() end)
 
+-- LSPConfig
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<C-n>', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<C-m>', vim.diagnostic.goto_prev)
+
 -- Plugins
 vim.g.vim_markdown_folding_disabled = 1
 vim.g.airline_theme = "solarized"

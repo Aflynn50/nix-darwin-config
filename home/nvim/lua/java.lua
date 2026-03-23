@@ -1,3 +1,5 @@
+vim.lsp.enable("jdtls")
+
 -- Taken from https://<amazon-internal-wiki>/bin/view/Bemol#HnvimbuiltinLSP
 function bemol()
     local bemol_dir = vim.fs.find({ '.bemol' }, { upward = true, type = 'directory' })[1]
