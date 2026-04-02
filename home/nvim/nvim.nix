@@ -24,8 +24,8 @@
     nvim-jdtls
     nvim-tree-lua
     leap-nvim
-    vim-repeat
-    oil-nvim
+    plenary-nvim # Dependency of typescript-tools-nvim
+    typescript-tools-nvim
 
     # My custom NeoSolarized 
     (pkgs.vimUtils.buildVimPlugin {

@@ -174,9 +174,6 @@ local config = {
 }
 require("nvim-tree").setup(config)
 
--- Oil
-require("oil").setup()
-
 -- Load plugin config
 require('telescope_config')
 require('treesitter_config')
