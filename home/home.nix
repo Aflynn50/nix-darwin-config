@@ -35,6 +35,7 @@
     lua-language-server # lua
     jdt-language-server # java
     typescript # for typescript-tools lsp
+    pyright # python lsp
   ];
 
   # nvim config

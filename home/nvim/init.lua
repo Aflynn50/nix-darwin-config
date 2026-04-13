@@ -174,6 +174,10 @@ local config = {
 }
 require("nvim-tree").setup(config)
 
+-- Python pyright lsp
+vim.lsp.enable('pyright')
+
+
 -- Load plugin config
 require('telescope_config')
 require('treesitter_config')
