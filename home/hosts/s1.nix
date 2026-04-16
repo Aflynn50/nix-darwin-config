@@ -3,7 +3,7 @@
   # nix files.
   programs.fish.interactiveShellInit = ''
     if status is-interactive
-        set -Ux AWS_PROFILE "AdministratorAccessV2-927675079783"
+        set -Ux AWS_PROFILE "S1A6Dev"
     end
   '';
 }

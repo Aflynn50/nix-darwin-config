@@ -150,29 +150,22 @@ vim.g.loaded_netrwPlugin = 1
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
--- empty setup using defaults
-require("nvim-tree").setup()
+local nvim_tree_config = {
+    renderer = {
+        group_empty = true,
+    },
+    update_focused_file = {
+        enable = true,
+        update_root = {
+            enable = true,
+        },
+    }
+}
+require("nvim-tree").setup(nvim_tree_config)
 
 vim.keymap.set("n", "<leader>t", function()
     require("nvim-tree.api").tree.toggle()
 end)
-
----@type nvim_tree.config
-local config = {
-    sort = {
-        sorter = "case_sensitive",
-    },
-    view = {
-        width = 30,
-    },
-    renderer = {
-        group_empty = true,
-    },
-    filters = {
-        dotfiles = false,
-    },
-}
-require("nvim-tree").setup(config)
 
 -- Python pyright lsp
 vim.lsp.enable('pyright')
