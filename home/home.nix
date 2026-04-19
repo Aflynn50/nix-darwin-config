@@ -28,6 +28,7 @@
     sl
     gnused # sed
     uv # python package manager
+    fastfetch
 
     # lsp/file formatters
     alejandra # .nix file formatter
