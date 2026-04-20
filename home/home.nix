@@ -116,6 +116,13 @@
     initContent = '''';
   };
 
+  # Jetbrains keymap config
+  imports = [./jetbrains/jetbrains.nix];
+  # Jetbrains ideavimrc
+  home.file.".ideavimrc" = {
+    source = ./dotfiles/jetbrains/.ideavimrc;
+  };
+
   # Enviromental variables
   home.sessionVariables = {
     EDITOR = "nvim";

@@ -1,0 +1,16 @@
+nnoremap <C-n> :action GotoNextError<CR>
+nnoremap <C-m> :action GotoPreviousError<CR>
+
+set easymotion
+let mapleader=" "
+
+" Disable default key mapping
+let g:EasyMotion_do_mapping=0
+" Customize the desired key mapping
+nmap <leader>f <Plug>(easymotion-f)
+nmap <leader>F <Plug>(easymotion-F)
+
+nmap gqq :action com.andrewbrookins.idea.wrap.WrapAction<CR>
+vmap gq :action com.andrewbrookins.idea.wrap.WrapAction<CR>
+
+nmap <leader>t :action RunClass<CR>
