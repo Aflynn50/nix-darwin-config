@@ -120,7 +120,7 @@
   imports = [./jetbrains/jetbrains.nix];
   # Jetbrains ideavimrc
   home.file.".ideavimrc" = {
-    source = ./dotfiles/jetbrains/.ideavimrc;
+    source = ./dotfiles/.ideavimrc;
   };
 
   # Enviromental variables

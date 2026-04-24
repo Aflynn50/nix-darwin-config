@@ -11,9 +11,10 @@
     else "${config.home.homeDirectory}/.config/JetBrains";
 
   jetbrainsDirs =
-    if builtins.pathExists jetbrainsBase
+    builtins.trace "it is ${lib.boolToString (builtins.pathExists jetbrainsBase)} and path is ${jetbrainsBase}"
+    (if builtins.pathExists jetbrainsBase
     then builtins.attrNames (builtins.readDir jetbrainsBase)
-    else [];
+    else []);
 
   prefixes = ["IntelliJIdea" "PyCharm"];
 
@@ -23,7 +24,7 @@
 
   keymapEntries = lib.listToAttrs (map (dir: {
     name = jetbrainsBase + "/${dir}/keymaps/Alastair_Nix_Keymap.xml";
-    value = {source = ./dotfiles/jetbrains/Alastair_Nix_Keymap.xml;};
+    value = {source = ./Alastair_Nix_Keymap.xml;};
   }) matchingDirs);
 in {
   home.file = keymapEntries;
