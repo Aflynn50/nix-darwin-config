@@ -8,6 +8,8 @@ if test (uname) = Darwin
     bind ctrl-backspace backward-kill-token
 end
 
+fish_add_path $HOME/.local/bin
+
 set -Ux EDITOR "vim"
 set -Ux SHELL "fish"
 
